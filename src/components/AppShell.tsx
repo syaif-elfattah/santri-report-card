@@ -19,6 +19,8 @@ import {
   Menu,
   X,
   CalendarDays,
+  BookMarked,
+  UserCog,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BULAN_LAPORAN } from "@/lib/mock";
@@ -34,6 +36,11 @@ const MAIN = [
   { to: "/laporan-wali", label: "Laporan Wali Santri", icon: Send },
   { to: "/template-cetak", label: "Template Cetak & Excel", icon: Printer },
   { to: "/masukan", label: "Masukan & Saran", icon: MessageSquare },
+] as const;
+
+const BANTUAN = [
+  { to: "/panduan", label: "Panduan", icon: BookMarked },
+  { to: "/akun", label: "Akun Saya", icon: UserCog },
 ] as const;
 
 const ADMIN = [
@@ -77,6 +84,11 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
         Admin
       </p>
       {ADMIN.map((m) => item(m.to, m.label, m.icon, m.dot))}
+      <div className="my-2 h-px bg-sidebar-border" />
+      <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        Bantuan
+      </p>
+      {BANTUAN.map((m) => item(m.to, m.label, m.icon))}
     </nav>
   );
 }

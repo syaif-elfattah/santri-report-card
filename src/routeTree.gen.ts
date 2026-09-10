@@ -10,33 +10,232 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AkunRouteImport } from './routes/akun'
+import { Route as CekLaporanRouteImport } from './routes/cek-laporan'
+import { Route as HafalanRouteImport } from './routes/hafalan'
+import { Route as HalaqohRouteImport } from './routes/halaqoh'
+import { Route as IbadahRouteImport } from './routes/ibadah'
+import { Route as KesehatanRouteImport } from './routes/kesehatan'
+import { Route as LaporanWaliRouteImport } from './routes/laporan-wali'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MasukanRouteImport } from './routes/masukan'
+import { Route as PanduanRouteImport } from './routes/panduan'
+import { Route as PelanggaranRouteImport } from './routes/pelanggaran'
+import { Route as PembayaranRouteImport } from './routes/pembayaran'
+import { Route as TemplateCetakRouteImport } from './routes/template-cetak'
+import { Route as AdminManajemenRouteImport } from './routes/admin/manajemen'
+import { Route as AdminMonitoringRouteImport } from './routes/admin/monitoring'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AkunRoute = AkunRouteImport.update({
+  id: '/akun',
+  path: '/akun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CekLaporanRoute = CekLaporanRouteImport.update({
+  id: '/cek-laporan',
+  path: '/cek-laporan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HafalanRoute = HafalanRouteImport.update({
+  id: '/hafalan',
+  path: '/hafalan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HalaqohRoute = HalaqohRouteImport.update({
+  id: '/halaqoh',
+  path: '/halaqoh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IbadahRoute = IbadahRouteImport.update({
+  id: '/ibadah',
+  path: '/ibadah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KesehatanRoute = KesehatanRouteImport.update({
+  id: '/kesehatan',
+  path: '/kesehatan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaporanWaliRoute = LaporanWaliRouteImport.update({
+  id: '/laporan-wali',
+  path: '/laporan-wali',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MasukanRoute = MasukanRouteImport.update({
+  id: '/masukan',
+  path: '/masukan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PanduanRoute = PanduanRouteImport.update({
+  id: '/panduan',
+  path: '/panduan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PelanggaranRoute = PelanggaranRouteImport.update({
+  id: '/pelanggaran',
+  path: '/pelanggaran',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PembayaranRoute = PembayaranRouteImport.update({
+  id: '/pembayaran',
+  path: '/pembayaran',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemplateCetakRoute = TemplateCetakRouteImport.update({
+  id: '/template-cetak',
+  path: '/template-cetak',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminManajemenRoute = AdminManajemenRouteImport.update({
+  id: '/admin/manajemen',
+  path: '/admin/manajemen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMonitoringRoute = AdminMonitoringRouteImport.update({
+  id: '/admin/monitoring',
+  path: '/admin/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/akun': typeof AkunRoute
+  '/cek-laporan': typeof CekLaporanRoute
+  '/hafalan': typeof HafalanRoute
+  '/halaqoh': typeof HalaqohRoute
+  '/ibadah': typeof IbadahRoute
+  '/kesehatan': typeof KesehatanRoute
+  '/laporan-wali': typeof LaporanWaliRoute
+  '/login': typeof LoginRoute
+  '/masukan': typeof MasukanRoute
+  '/panduan': typeof PanduanRoute
+  '/pelanggaran': typeof PelanggaranRoute
+  '/pembayaran': typeof PembayaranRoute
+  '/template-cetak': typeof TemplateCetakRoute
+  '/admin/manajemen': typeof AdminManajemenRoute
+  '/admin/monitoring': typeof AdminMonitoringRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/akun': typeof AkunRoute
+  '/cek-laporan': typeof CekLaporanRoute
+  '/hafalan': typeof HafalanRoute
+  '/halaqoh': typeof HalaqohRoute
+  '/ibadah': typeof IbadahRoute
+  '/kesehatan': typeof KesehatanRoute
+  '/laporan-wali': typeof LaporanWaliRoute
+  '/login': typeof LoginRoute
+  '/masukan': typeof MasukanRoute
+  '/panduan': typeof PanduanRoute
+  '/pelanggaran': typeof PelanggaranRoute
+  '/pembayaran': typeof PembayaranRoute
+  '/template-cetak': typeof TemplateCetakRoute
+  '/admin/manajemen': typeof AdminManajemenRoute
+  '/admin/monitoring': typeof AdminMonitoringRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/akun': typeof AkunRoute
+  '/cek-laporan': typeof CekLaporanRoute
+  '/hafalan': typeof HafalanRoute
+  '/halaqoh': typeof HalaqohRoute
+  '/ibadah': typeof IbadahRoute
+  '/kesehatan': typeof KesehatanRoute
+  '/laporan-wali': typeof LaporanWaliRoute
+  '/login': typeof LoginRoute
+  '/masukan': typeof MasukanRoute
+  '/panduan': typeof PanduanRoute
+  '/pelanggaran': typeof PelanggaranRoute
+  '/pembayaran': typeof PembayaranRoute
+  '/template-cetak': typeof TemplateCetakRoute
+  '/admin/manajemen': typeof AdminManajemenRoute
+  '/admin/monitoring': typeof AdminMonitoringRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/akun'
+    | '/cek-laporan'
+    | '/hafalan'
+    | '/halaqoh'
+    | '/ibadah'
+    | '/kesehatan'
+    | '/laporan-wali'
+    | '/login'
+    | '/masukan'
+    | '/panduan'
+    | '/pelanggaran'
+    | '/pembayaran'
+    | '/template-cetak'
+    | '/admin/manajemen'
+    | '/admin/monitoring'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/akun'
+    | '/cek-laporan'
+    | '/hafalan'
+    | '/halaqoh'
+    | '/ibadah'
+    | '/kesehatan'
+    | '/laporan-wali'
+    | '/login'
+    | '/masukan'
+    | '/panduan'
+    | '/pelanggaran'
+    | '/pembayaran'
+    | '/template-cetak'
+    | '/admin/manajemen'
+    | '/admin/monitoring'
+  id:
+    | '__root__'
+    | '/'
+    | '/akun'
+    | '/cek-laporan'
+    | '/hafalan'
+    | '/halaqoh'
+    | '/ibadah'
+    | '/kesehatan'
+    | '/laporan-wali'
+    | '/login'
+    | '/masukan'
+    | '/panduan'
+    | '/pelanggaran'
+    | '/pembayaran'
+    | '/template-cetak'
+    | '/admin/manajemen'
+    | '/admin/monitoring'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AkunRoute: typeof AkunRoute
+  CekLaporanRoute: typeof CekLaporanRoute
+  HafalanRoute: typeof HafalanRoute
+  HalaqohRoute: typeof HalaqohRoute
+  IbadahRoute: typeof IbadahRoute
+  KesehatanRoute: typeof KesehatanRoute
+  LaporanWaliRoute: typeof LaporanWaliRoute
+  LoginRoute: typeof LoginRoute
+  MasukanRoute: typeof MasukanRoute
+  PanduanRoute: typeof PanduanRoute
+  PelanggaranRoute: typeof PelanggaranRoute
+  PembayaranRoute: typeof PembayaranRoute
+  TemplateCetakRoute: typeof TemplateCetakRoute
+  AdminManajemenRoute: typeof AdminManajemenRoute
+  AdminMonitoringRoute: typeof AdminMonitoringRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +247,131 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/akun': {
+      id: '/akun'
+      path: '/akun'
+      fullPath: '/akun'
+      preLoaderRoute: typeof AkunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cek-laporan': {
+      id: '/cek-laporan'
+      path: '/cek-laporan'
+      fullPath: '/cek-laporan'
+      preLoaderRoute: typeof CekLaporanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hafalan': {
+      id: '/hafalan'
+      path: '/hafalan'
+      fullPath: '/hafalan'
+      preLoaderRoute: typeof HafalanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/halaqoh': {
+      id: '/halaqoh'
+      path: '/halaqoh'
+      fullPath: '/halaqoh'
+      preLoaderRoute: typeof HalaqohRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ibadah': {
+      id: '/ibadah'
+      path: '/ibadah'
+      fullPath: '/ibadah'
+      preLoaderRoute: typeof IbadahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kesehatan': {
+      id: '/kesehatan'
+      path: '/kesehatan'
+      fullPath: '/kesehatan'
+      preLoaderRoute: typeof KesehatanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/laporan-wali': {
+      id: '/laporan-wali'
+      path: '/laporan-wali'
+      fullPath: '/laporan-wali'
+      preLoaderRoute: typeof LaporanWaliRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masukan': {
+      id: '/masukan'
+      path: '/masukan'
+      fullPath: '/masukan'
+      preLoaderRoute: typeof MasukanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/panduan': {
+      id: '/panduan'
+      path: '/panduan'
+      fullPath: '/panduan'
+      preLoaderRoute: typeof PanduanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pelanggaran': {
+      id: '/pelanggaran'
+      path: '/pelanggaran'
+      fullPath: '/pelanggaran'
+      preLoaderRoute: typeof PelanggaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pembayaran': {
+      id: '/pembayaran'
+      path: '/pembayaran'
+      fullPath: '/pembayaran'
+      preLoaderRoute: typeof PembayaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/template-cetak': {
+      id: '/template-cetak'
+      path: '/template-cetak'
+      fullPath: '/template-cetak'
+      preLoaderRoute: typeof TemplateCetakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/manajemen': {
+      id: '/admin/manajemen'
+      path: '/admin/manajemen'
+      fullPath: '/admin/manajemen'
+      preLoaderRoute: typeof AdminManajemenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/monitoring': {
+      id: '/admin/monitoring'
+      path: '/admin/monitoring'
+      fullPath: '/admin/monitoring'
+      preLoaderRoute: typeof AdminMonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AkunRoute: AkunRoute,
+  CekLaporanRoute: CekLaporanRoute,
+  HafalanRoute: HafalanRoute,
+  HalaqohRoute: HalaqohRoute,
+  IbadahRoute: IbadahRoute,
+  KesehatanRoute: KesehatanRoute,
+  LaporanWaliRoute: LaporanWaliRoute,
+  LoginRoute: LoginRoute,
+  MasukanRoute: MasukanRoute,
+  PanduanRoute: PanduanRoute,
+  PelanggaranRoute: PelanggaranRoute,
+  PembayaranRoute: PembayaranRoute,
+  TemplateCetakRoute: TemplateCetakRoute,
+  AdminManajemenRoute: AdminManajemenRoute,
+  AdminMonitoringRoute: AdminMonitoringRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
