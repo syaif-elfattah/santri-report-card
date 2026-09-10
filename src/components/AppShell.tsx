@@ -19,6 +19,8 @@ import {
   Menu,
   X,
   CalendarDays,
+  BookMarked,
+  UserCog,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BULAN_LAPORAN } from "@/lib/mock";
