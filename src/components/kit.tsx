@@ -1,6 +1,106 @@
 import { useState, type ReactNode } from "react";
-import { ChevronDown, Search, Check } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Search,
+  Check,
+  ArrowUp,
+  ArrowDown,
+  GripVertical,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const BULAN_URUT = [
+  "Januari",
+  "Februari",
+  "Maret",
+  "April",
+  "Mei",
+  "Juni",
+  "Juli",
+  "Agustus",
+  "September",
+  "Oktober",
+  "November",
+  "Desember",
+];
+
+/** Geser bulan (panah kiri/kanan) — dipakai di modul rekap bulanan & laporan wali. */
+export function MonthNav({ start, className }: { start: string; className?: string }) {
+  const parts = start.split(" ");
+  const [i, setI] = useState(Math.max(0, BULAN_URUT.indexOf(parts[0] ?? "")));
+  const [tahun, setTahun] = useState(Number(parts[1] ?? new Date().getFullYear()));
+  const geser = (d: number) => {
+    let n = i + d;
+    let t = tahun;
+    if (n < 0) {
+      n = 11;
+      t -= 1;
+    }
+    if (n > 11) {
+      n = 0;
+      t += 1;
+    }
+    setI(n);
+    setTahun(t);
+  };
+  const aktif = `${BULAN_URUT[i]} ${tahun}`;
+  const sama = aktif === start;
+
+  return (
+    <div className={cn("glass-soft flex items-center gap-1 rounded-xl p-1", className)}>
+      <button
+        type="button"
+        onClick={() => geser(-1)}
+        aria-label="Bulan sebelumnya"
+        className="grid size-8 shrink-0 place-items-center rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground"
+      >
+        <ChevronLeft className="size-4" />
+      </button>
+      <div className="min-w-0 flex-1 px-1 text-center">
+        <p className="truncate text-sm font-medium">{aktif}</p>
+        <p className="truncate text-[10px] text-muted-foreground">
+          {sama ? "Bulan laporan aktif" : "Bulan lain — bisa dilihat & diedit"}
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={() => geser(1)}
+        aria-label="Bulan berikutnya"
+        className="grid size-8 shrink-0 place-items-center rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground"
+      >
+        <ChevronRight className="size-4" />
+      </button>
+    </div>
+  );
+}
+
+/** Pengatur urutan baris santri: pegangan geser + tombol naik/turun. */
+export function RowOrder({ index }: { index: number }) {
+  return (
+    <div className="flex items-center gap-1 text-muted-foreground">
+      <GripVertical className="size-4 cursor-grab opacity-60" aria-hidden />
+      <span className="w-5 text-xs tabular-nums">{index + 1}</span>
+      <div className="flex flex-col">
+        <button
+          type="button"
+          aria-label="Naikkan urutan"
+          className="grid size-4 place-items-center rounded hover:bg-secondary hover:text-foreground"
+        >
+          <ArrowUp className="size-3" />
+        </button>
+        <button
+          type="button"
+          aria-label="Turunkan urutan"
+          className="grid size-4 place-items-center rounded hover:bg-secondary hover:text-foreground"
+        >
+          <ArrowDown className="size-3" />
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export function GlassCard({
   className,

@@ -8,8 +8,10 @@ import {
   DataTable,
   GlassCard,
   Input,
+  MonthNav,
   NumCell,
   PageHeader,
+  RowOrder,
   SearchInput,
   SearchableSelect,
   SectionTitle,
@@ -59,7 +61,7 @@ function Hafalan() {
     <AppShell>
       <PageHeader
         title="Hafalan Santri"
-        subtitle={`Capaian hafalan bulan ${BULAN_LAPORAN}`}
+        subtitle="Capaian hafalan per bulan"
         actions={
           <Button variant="hero">
             <Save className="size-4" /> Simpan semua
@@ -73,9 +75,10 @@ function Hafalan() {
 
       <GlassCard className="p-4 sm:p-5">
         <SectionTitle hint="Kelas MA X-A">Isian hafalan</SectionTitle>
-        <div className="mb-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_180px]">
+        <div className="mb-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_180px_220px]">
           <SearchInput />
           <Select options={KELAS} />
+          <MonthNav start={BULAN_LAPORAN} />
         </div>
 
         {/* Tabel untuk layar lebar */}
@@ -83,6 +86,7 @@ function Hafalan() {
           <DataTable
             head={
               <>
+                <Th>Urutan</Th>
                 <Th sortable>Santri</Th>
                 <Th>Surat terakhir</Th>
                 <Th align="center">Ayat</Th>
@@ -91,8 +95,11 @@ function Hafalan() {
               </>
             }
           >
-            {HAFALAN.map((h) => (
+            {HAFALAN.map((h, i) => (
               <tr key={h.nama} className="align-middle hover:bg-secondary/40">
+                <Td>
+                  <RowOrder index={i} />
+                </Td>
                 <Td className="font-medium">{h.nama}</Td>
                 <Td className="w-56">
                   <SearchableSelect options={SURAT} value={h.surat} placeholder="Pilih surat…" />
@@ -113,10 +120,13 @@ function Hafalan() {
 
         {/* Kartu untuk HP */}
         <ul className="space-y-3 md:hidden">
-          {HAFALAN.map((h) => (
+          {HAFALAN.map((h, i) => (
             <li key={h.nama} className="glass-soft space-y-3 rounded-2xl p-3">
               <div className="flex items-center justify-between gap-2">
-                <p className="min-w-0 truncate text-sm font-medium">{h.nama}</p>
+                <div className="flex min-w-0 items-center gap-2">
+                  <RowOrder index={i} />
+                  <p className="min-w-0 truncate text-sm font-medium">{h.nama}</p>
+                </div>
                 {h.surat ? <Badge tone="success">Terisi</Badge> : <Badge tone="warning">Kosong</Badge>}
               </div>
               <SearchableSelect options={SURAT} value={h.surat} placeholder="Pilih surat…" />

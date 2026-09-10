@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Save } from "lucide-react";
+import { Save, Keyboard } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import {
   Banner,
   Button,
   DataTable,
   GlassCard,
+  MonthNav,
   NumCell,
   PageHeader,
+  RowOrder,
   SearchInput,
   SectionTitle,
   Select,
@@ -43,7 +45,7 @@ function Halaqoh() {
     <AppShell>
       <PageHeader
         title="Absen Halaqoh & KBM"
-        subtitle={`Rekap kehadiran bulan ${BULAN_LAPORAN}`}
+        subtitle="Rekap kehadiran per bulan"
         actions={
           <Button variant="hero">
             <Save className="size-4" /> Simpan semua
@@ -63,13 +65,19 @@ function Halaqoh() {
 
       <GlassCard className="p-4 sm:p-5">
         <SectionTitle hint="Kelas MA X-A">Daftar santri</SectionTitle>
-        <div className="mb-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_180px]">
+        <div className="mb-3 grid gap-3 sm:grid-cols-[minmax(0,1fr)_180px_220px]">
           <SearchInput />
           <Select options={KELAS} />
+          <MonthNav start={BULAN_LAPORAN} />
         </div>
+        <p className="mb-4 flex items-center gap-1.5 text-[11px] text-muted-foreground">
+          <Keyboard className="size-3.5" /> Isian seperti Excel: Tab pindah kolom, Enter pindah
+          baris, dan bisa tempel (paste) banyak sel sekaligus dari spreadsheet.
+        </p>
         <DataTable
           head={
             <>
+              <Th>Urutan</Th>
               <Th sortable>Santri</Th>
               <Th align="center">Sakit</Th>
               <Th align="center">Izin</Th>
@@ -78,8 +86,11 @@ function Halaqoh() {
             </>
           }
         >
-          {HALAQOH.map((h) => (
+          {HALAQOH.map((h, i) => (
             <tr key={h.nama} className="hover:bg-secondary/40">
+              <Td>
+                <RowOrder index={i} />
+              </Td>
               <Td className="font-medium">{h.nama}</Td>
               <Td align="center">
                 <NumCell value={h.sakit} />
