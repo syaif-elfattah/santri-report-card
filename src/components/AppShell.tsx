@@ -84,6 +84,11 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
         Admin
       </p>
       {ADMIN.map((m) => item(m.to, m.label, m.icon, m.dot))}
+      <div className="my-2 h-px bg-sidebar-border" />
+      <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        Bantuan
+      </p>
+      {BANTUAN.map((m) => item(m.to, m.label, m.icon))}
     </nav>
   );
 }
