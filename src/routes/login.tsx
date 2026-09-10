@@ -73,7 +73,7 @@ function Login() {
 
           <h2 className="font-display text-xl font-semibold">Masuk ke akun</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Gunakan akun yang diberikan admin pondok.
+            Khusus musyrif dan admin pondok. Gunakan akun yang diberikan admin.
           </p>
 
           <div className="mt-5 space-y-3">
