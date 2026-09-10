@@ -88,7 +88,7 @@ function Panduan() {
         </div>
 
         <ul className="space-y-2">
-          {ISI[tab].map((item, i) => (
+          {(ISI[tab] ?? []).map((item, i) => (
             <li key={item.q} className="glass-soft overflow-hidden rounded-2xl">
               <button
                 onClick={() => setOpen(open === i ? -1 : i)}
