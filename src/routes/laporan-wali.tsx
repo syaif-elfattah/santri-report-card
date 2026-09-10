@@ -56,6 +56,11 @@ function LaporanWali() {
         &quot;Dikecualikan&quot; agar tidak dihitung sebagai tunggakan pengisian.
       </Banner>
 
+      <Banner tone="primary" title="Tombol Kirim WA membuka WhatsApp berisi tautan PDF bertoken">
+        Wali cukup mengetuk tautan itu dan rapor PDF langsung terbuka — tanpa akun dan tanpa perlu
+        memasukkan nomor apa pun.
+      </Banner>
+
       <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         <Stat label="Siap dikirim" value={2} hintTone="success" hint="Data lengkap" />
         <Stat label="Belum lengkap" value={2} hintTone="warning" />
@@ -65,10 +70,11 @@ function LaporanWali() {
 
       <GlassCard className="p-4 sm:p-5">
         <SectionTitle hint={`${SANTRI.length} santri`}>Daftar pengiriman</SectionTitle>
-        <div className="mb-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_180px_170px]">
+        <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_180px_170px_220px]">
           <SearchInput />
           <Select options={KELAS} />
           <Select options={["Semua status", "Siap kirim", "Belum lengkap", "Dikecualikan"]} />
+          <MonthNav start={BULAN_LAPORAN} />
         </div>
 
         <div className="hidden md:block">
