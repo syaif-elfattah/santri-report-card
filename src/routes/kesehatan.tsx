@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Plus, Pencil, Trash2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Save, Info } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import {
+  Banner,
   Button,
   DataTable,
   DateRangePresets,
@@ -12,6 +14,7 @@ import {
   SearchInput,
   SearchableSelect,
   SectionTitle,
+  Tabs,
   Td,
   Textarea,
   Th,
@@ -39,36 +42,95 @@ export const Route = createFileRoute("/kesehatan")({
   component: Kesehatan,
 });
 
+function BarisCatat({ index, onHapus }: { index: number; onHapus: () => void }) {
+  return (
+    <div className="glass-soft rounded-2xl p-3 sm:p-4">
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          Baris {index + 1}
+        </p>
+        <Button size="sm" variant="ghost" onClick={onHapus} aria-label="Hapus baris">
+          <Trash2 className="size-3.5" /> Hapus baris
+        </Button>
+      </div>
+      <div className="grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_160px_minmax(0,1fr)]">
+        <Field label="Nama santri">
+          <SearchableSelect options={SANTRI.map((s) => s.nama)} placeholder="Pilih santri…" />
+        </Field>
+        <Field label="Tanggal kejadian">
+          <Input type="date" defaultValue="2025-08-21" />
+        </Field>
+        <Field label="Jenis sakit">
+          <Input placeholder="Contoh: Demam tinggi" />
+        </Field>
+      </div>
+      <div className="mt-3 grid gap-3 lg:grid-cols-2">
+        <Field label="Penanganan">
+          <Textarea placeholder="Obat / tindakan yang diberikan…" className="min-h-20" />
+        </Field>
+        <Field label="Keterangan (opsional)">
+          <Textarea placeholder="Contoh: dijemput wali 2 hari" className="min-h-20" />
+        </Field>
+      </div>
+    </div>
+  );
+}
+
 function Kesehatan() {
+  const [tab, setTab] = useState("Catat");
+  const [rows, setRows] = useState<number[]>([1, 2]);
+  const [next, setNext] = useState(3);
+
   return (
     <AppShell>
-      <PageHeader title="Kesehatan Santri" subtitle={`Catatan bulan ${BULAN_LAPORAN}`} />
-
-      <div className="grid gap-4 xl:grid-cols-[380px_minmax(0,1fr)]">
-        <GlassCard className="h-fit p-4 sm:p-5">
-          <SectionTitle hint="Form">Tambah catatan sakit</SectionTitle>
-          <div className="space-y-3">
-            <Field label="Nama santri">
-              <SearchableSelect options={SANTRI.map((s) => s.nama)} placeholder="Pilih santri…" />
-            </Field>
-            <Field label="Tanggal">
-              <Input type="date" defaultValue="2025-08-21" />
-            </Field>
-            <Field label="Jenis sakit">
-              <Input placeholder="Contoh: Demam tinggi" />
-            </Field>
-            <Field label="Penanganan">
-              <Textarea placeholder="Obat / tindakan yang diberikan…" />
-            </Field>
-            <Field label="Keterangan (opsional)">
-              <Input placeholder="Contoh: dijemput wali 2 hari" />
-            </Field>
-            <Button variant="hero" className="w-full">
-              <Plus className="size-4" /> Simpan catatan
+      <PageHeader
+        title="Kesehatan Santri"
+        subtitle={`Catatan bulan ${BULAN_LAPORAN}`}
+        actions={
+          tab === "Catat" ? (
+            <Button variant="hero">
+              <Save className="size-4" /> Simpan semua
             </Button>
+          ) : null
+        }
+      />
+
+      <Tabs tabs={["Catat", "Laporan"]} active={tab} onChange={setTab} />
+
+      {tab === "Catat" ? (
+        <GlassCard className="p-4 sm:p-5">
+          <SectionTitle hint={`${rows.length} baris`}>Catat beberapa kejadian sekaligus</SectionTitle>
+
+          <Banner tone="primary" title="Baris kosong otomatis diabaikan">
+            Isi sebanyak yang perlu, lalu tekan &quot;Simpan semua&quot; sekali. Baris yang belum
+            lengkap tidak ikut tersimpan dan tidak menimbulkan pesan kesalahan.
+          </Banner>
+
+          <div className="mt-4 space-y-3">
+            {rows.map((id, i) => (
+              <BarisCatat key={id} index={i} onHapus={() => setRows((r) => r.filter((x) => x !== id))} />
+            ))}
+          </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setRows((r) => [...r, next]);
+                setNext((n) => n + 1);
+              }}
+            >
+              <Plus className="size-4" /> Tambah baris
+            </Button>
+            <Button variant="hero">
+              <Save className="size-4" /> Simpan semua
+            </Button>
+            <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Info className="size-3.5" /> Tanggal diisi per baris kejadian, bukan per bulan.
+            </span>
           </div>
         </GlassCard>
-
+      ) : (
         <GlassCard className="p-4 sm:p-5">
           <SectionTitle hint={`${KESEHATAN.length} catatan`}>Riwayat kesehatan</SectionTitle>
           <div className="mb-3">
@@ -110,7 +172,7 @@ function Kesehatan() {
             ))}
           </DataTable>
         </GlassCard>
-      </div>
+      )}
     </AppShell>
   );
 }
