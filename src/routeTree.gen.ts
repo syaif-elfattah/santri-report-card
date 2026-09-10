@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HafalanRouteImport } from './routes/hafalan'
+import { Route as HalaqohRouteImport } from './routes/halaqoh'
+import { Route as IbadahRouteImport } from './routes/ibadah'
+import { Route as KesehatanRouteImport } from './routes/kesehatan'
+import { Route as PelanggaranRouteImport } from './routes/pelanggaran'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HafalanRoute = HafalanRouteImport.update({
+  id: '/hafalan',
+  path: '/hafalan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HalaqohRoute = HalaqohRouteImport.update({
+  id: '/halaqoh',
+  path: '/halaqoh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IbadahRoute = IbadahRouteImport.update({
+  id: '/ibadah',
+  path: '/ibadah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KesehatanRoute = KesehatanRouteImport.update({
+  id: '/kesehatan',
+  path: '/kesehatan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PelanggaranRoute = PelanggaranRouteImport.update({
+  id: '/pelanggaran',
+  path: '/pelanggaran',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/hafalan': typeof HafalanRoute
+  '/halaqoh': typeof HalaqohRoute
+  '/ibadah': typeof IbadahRoute
+  '/kesehatan': typeof KesehatanRoute
+  '/pelanggaran': typeof PelanggaranRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/hafalan': typeof HafalanRoute
+  '/halaqoh': typeof HalaqohRoute
+  '/ibadah': typeof IbadahRoute
+  '/kesehatan': typeof KesehatanRoute
+  '/pelanggaran': typeof PelanggaranRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/hafalan': typeof HafalanRoute
+  '/halaqoh': typeof HalaqohRoute
+  '/ibadah': typeof IbadahRoute
+  '/kesehatan': typeof KesehatanRoute
+  '/pelanggaran': typeof PelanggaranRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/hafalan' | '/halaqoh' | '/ibadah' | '/kesehatan' | '/pelanggaran'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/hafalan' | '/halaqoh' | '/ibadah' | '/kesehatan' | '/pelanggaran'
+  id:
+    | '__root__'
+    | '/'
+    | '/hafalan'
+    | '/halaqoh'
+    | '/ibadah'
+    | '/kesehatan'
+    | '/pelanggaran'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HafalanRoute: typeof HafalanRoute
+  HalaqohRoute: typeof HalaqohRoute
+  IbadahRoute: typeof IbadahRoute
+  KesehatanRoute: typeof KesehatanRoute
+  PelanggaranRoute: typeof PelanggaranRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hafalan': {
+      id: '/hafalan'
+      path: '/hafalan'
+      fullPath: '/hafalan'
+      preLoaderRoute: typeof HafalanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/halaqoh': {
+      id: '/halaqoh'
+      path: '/halaqoh'
+      fullPath: '/halaqoh'
+      preLoaderRoute: typeof HalaqohRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ibadah': {
+      id: '/ibadah'
+      path: '/ibadah'
+      fullPath: '/ibadah'
+      preLoaderRoute: typeof IbadahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kesehatan': {
+      id: '/kesehatan'
+      path: '/kesehatan'
+      fullPath: '/kesehatan'
+      preLoaderRoute: typeof KesehatanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pelanggaran': {
+      id: '/pelanggaran'
+      path: '/pelanggaran'
+      fullPath: '/pelanggaran'
+      preLoaderRoute: typeof PelanggaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HafalanRoute: HafalanRoute,
+  HalaqohRoute: HalaqohRoute,
+  IbadahRoute: IbadahRoute,
+  KesehatanRoute: KesehatanRoute,
+  PelanggaranRoute: PelanggaranRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
