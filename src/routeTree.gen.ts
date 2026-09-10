@@ -10,15 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AkunRouteImport } from './routes/akun'
 import { Route as HafalanRouteImport } from './routes/hafalan'
 import { Route as HalaqohRouteImport } from './routes/halaqoh'
 import { Route as IbadahRouteImport } from './routes/ibadah'
 import { Route as KesehatanRouteImport } from './routes/kesehatan'
+import { Route as LaporanWaliRouteImport } from './routes/laporan-wali'
+import { Route as MasukanRouteImport } from './routes/masukan'
+import { Route as PanduanRouteImport } from './routes/panduan'
 import { Route as PelanggaranRouteImport } from './routes/pelanggaran'
+import { Route as PembayaranRouteImport } from './routes/pembayaran'
+import { Route as TemplateCetakRouteImport } from './routes/template-cetak'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AkunRoute = AkunRouteImport.update({
+  id: '/akun',
+  path: '/akun',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HafalanRoute = HafalanRouteImport.update({
@@ -41,60 +52,138 @@ const KesehatanRoute = KesehatanRouteImport.update({
   path: '/kesehatan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LaporanWaliRoute = LaporanWaliRouteImport.update({
+  id: '/laporan-wali',
+  path: '/laporan-wali',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MasukanRoute = MasukanRouteImport.update({
+  id: '/masukan',
+  path: '/masukan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PanduanRoute = PanduanRouteImport.update({
+  id: '/panduan',
+  path: '/panduan',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PelanggaranRoute = PelanggaranRouteImport.update({
   id: '/pelanggaran',
   path: '/pelanggaran',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PembayaranRoute = PembayaranRouteImport.update({
+  id: '/pembayaran',
+  path: '/pembayaran',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemplateCetakRoute = TemplateCetakRouteImport.update({
+  id: '/template-cetak',
+  path: '/template-cetak',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/akun': typeof AkunRoute
   '/hafalan': typeof HafalanRoute
   '/halaqoh': typeof HalaqohRoute
   '/ibadah': typeof IbadahRoute
   '/kesehatan': typeof KesehatanRoute
+  '/laporan-wali': typeof LaporanWaliRoute
+  '/masukan': typeof MasukanRoute
+  '/panduan': typeof PanduanRoute
   '/pelanggaran': typeof PelanggaranRoute
+  '/pembayaran': typeof PembayaranRoute
+  '/template-cetak': typeof TemplateCetakRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/akun': typeof AkunRoute
   '/hafalan': typeof HafalanRoute
   '/halaqoh': typeof HalaqohRoute
   '/ibadah': typeof IbadahRoute
   '/kesehatan': typeof KesehatanRoute
+  '/laporan-wali': typeof LaporanWaliRoute
+  '/masukan': typeof MasukanRoute
+  '/panduan': typeof PanduanRoute
   '/pelanggaran': typeof PelanggaranRoute
+  '/pembayaran': typeof PembayaranRoute
+  '/template-cetak': typeof TemplateCetakRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/akun': typeof AkunRoute
   '/hafalan': typeof HafalanRoute
   '/halaqoh': typeof HalaqohRoute
   '/ibadah': typeof IbadahRoute
   '/kesehatan': typeof KesehatanRoute
+  '/laporan-wali': typeof LaporanWaliRoute
+  '/masukan': typeof MasukanRoute
+  '/panduan': typeof PanduanRoute
   '/pelanggaran': typeof PelanggaranRoute
+  '/pembayaran': typeof PembayaranRoute
+  '/template-cetak': typeof TemplateCetakRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/hafalan' | '/halaqoh' | '/ibadah' | '/kesehatan' | '/pelanggaran'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hafalan' | '/halaqoh' | '/ibadah' | '/kesehatan' | '/pelanggaran'
-  id:
-    | '__root__'
     | '/'
+    | '/akun'
     | '/hafalan'
     | '/halaqoh'
     | '/ibadah'
     | '/kesehatan'
+    | '/laporan-wali'
+    | '/masukan'
+    | '/panduan'
     | '/pelanggaran'
+    | '/pembayaran'
+    | '/template-cetak'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/akun'
+    | '/hafalan'
+    | '/halaqoh'
+    | '/ibadah'
+    | '/kesehatan'
+    | '/laporan-wali'
+    | '/masukan'
+    | '/panduan'
+    | '/pelanggaran'
+    | '/pembayaran'
+    | '/template-cetak'
+  id:
+    | '__root__'
+    | '/'
+    | '/akun'
+    | '/hafalan'
+    | '/halaqoh'
+    | '/ibadah'
+    | '/kesehatan'
+    | '/laporan-wali'
+    | '/masukan'
+    | '/panduan'
+    | '/pelanggaran'
+    | '/pembayaran'
+    | '/template-cetak'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AkunRoute: typeof AkunRoute
   HafalanRoute: typeof HafalanRoute
   HalaqohRoute: typeof HalaqohRoute
   IbadahRoute: typeof IbadahRoute
   KesehatanRoute: typeof KesehatanRoute
+  LaporanWaliRoute: typeof LaporanWaliRoute
+  MasukanRoute: typeof MasukanRoute
+  PanduanRoute: typeof PanduanRoute
   PelanggaranRoute: typeof PelanggaranRoute
+  PembayaranRoute: typeof PembayaranRoute
+  TemplateCetakRoute: typeof TemplateCetakRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -104,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/akun': {
+      id: '/akun'
+      path: '/akun'
+      fullPath: '/akun'
+      preLoaderRoute: typeof AkunRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hafalan': {
@@ -134,6 +230,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KesehatanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/laporan-wali': {
+      id: '/laporan-wali'
+      path: '/laporan-wali'
+      fullPath: '/laporan-wali'
+      preLoaderRoute: typeof LaporanWaliRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masukan': {
+      id: '/masukan'
+      path: '/masukan'
+      fullPath: '/masukan'
+      preLoaderRoute: typeof MasukanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/panduan': {
+      id: '/panduan'
+      path: '/panduan'
+      fullPath: '/panduan'
+      preLoaderRoute: typeof PanduanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pelanggaran': {
       id: '/pelanggaran'
       path: '/pelanggaran'
@@ -141,16 +258,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PelanggaranRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pembayaran': {
+      id: '/pembayaran'
+      path: '/pembayaran'
+      fullPath: '/pembayaran'
+      preLoaderRoute: typeof PembayaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/template-cetak': {
+      id: '/template-cetak'
+      path: '/template-cetak'
+      fullPath: '/template-cetak'
+      preLoaderRoute: typeof TemplateCetakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AkunRoute: AkunRoute,
   HafalanRoute: HafalanRoute,
   HalaqohRoute: HalaqohRoute,
   IbadahRoute: IbadahRoute,
   KesehatanRoute: KesehatanRoute,
+  LaporanWaliRoute: LaporanWaliRoute,
+  MasukanRoute: MasukanRoute,
+  PanduanRoute: PanduanRoute,
   PelanggaranRoute: PelanggaranRoute,
+  PembayaranRoute: PembayaranRoute,
+  TemplateCetakRoute: TemplateCetakRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
