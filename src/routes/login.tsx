@@ -94,15 +94,10 @@ function Login() {
             </Link>
           </div>
 
-          <div className="my-5 flex items-center gap-3 text-[11px] uppercase tracking-wider text-muted-foreground">
-            <span className="h-px flex-1 bg-border" /> atau <span className="h-px flex-1 bg-border" />
-          </div>
-
-          <Link to="/cek-laporan">
-            <Button variant="outline" className="w-full">
-              Saya wali santri — cek laporan anak
-            </Button>
-          </Link>
+          <p className="mt-5 rounded-xl bg-secondary/60 px-3 py-2.5 text-[11px] leading-relaxed text-muted-foreground">
+            Wali santri tidak memiliki akun dan tidak perlu masuk. Wali cukup membuka tautan rapor
+            yang dikirim musyrif lewat WhatsApp.
+          </p>
 
           <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
             <HelpCircle className="size-3.5" /> Lupa kata sandi? Hubungi admin pondok.

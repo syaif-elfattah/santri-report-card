@@ -51,6 +51,14 @@ function CekLaporan() {
           <ArrowLeft className="size-4" /> Kembali ke halaman masuk
         </Link>
 
+        <div className="rounded-2xl bg-warning/12 px-4 py-3 text-xs leading-relaxed text-warning-foreground ring-1 ring-warning/35">
+          <p className="text-sm font-semibold">Halaman cadangan — belum dipakai saat ini</p>
+          <p className="mt-0.5 opacity-80">
+            Untuk saat ini wali santri menerima tautan rapor langsung dari musyrif lewat WhatsApp,
+            jadi tidak perlu memasukkan nomor di sini.
+          </p>
+        </div>
+
         <GlassCard className="p-6">
           <h1 className="font-display text-2xl font-bold">Cek Laporan Anak</h1>
           <p className="mt-1 text-sm text-muted-foreground">
