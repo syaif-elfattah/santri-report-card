@@ -36,6 +36,11 @@ const MAIN = [
   { to: "/masukan", label: "Masukan & Saran", icon: MessageSquare },
 ] as const;
 
+const BANTUAN = [
+  { to: "/panduan", label: "Panduan", icon: BookMarked },
+  { to: "/akun", label: "Akun Saya", icon: UserCog },
+] as const;
+
 const ADMIN = [
   { to: "/admin/manajemen", label: "Manajemen", icon: Settings, dot: false },
   { to: "/admin/monitoring", label: "Monitoring Laporan", icon: BarChart3, dot: true },

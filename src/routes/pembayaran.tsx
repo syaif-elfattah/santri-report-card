@@ -4,15 +4,12 @@ import { AppShell } from "@/components/AppShell";
 import {
   Badge,
   Banner,
-  DataTable,
   GlassCard,
   PageHeader,
   SearchInput,
   SectionTitle,
   Select,
   Stat,
-  Td,
-  Th,
 } from "@/components/kit";
 import { BULAN_LAPORAN, BULAN_SPP, KELAS, PEMBAYARAN, rupiah } from "@/lib/mock";
 
