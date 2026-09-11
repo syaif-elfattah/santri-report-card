@@ -48,6 +48,30 @@ const ADMIN = [
   { to: "/admin/monitoring", label: "Monitoring Laporan", icon: BarChart3, dot: true },
 ] as const;
 
+const ICON_TONE = [
+  "bg-tone-1/15 text-tone-1",
+  "bg-tone-2/15 text-tone-2",
+  "bg-tone-3/15 text-tone-3",
+  "bg-tone-4/18 text-tone-4",
+  "bg-tone-5/15 text-tone-5",
+  "bg-tone-6/15 text-tone-6",
+] as const;
+
+const TONE_TEXT = [
+  "text-tone-1",
+  "text-tone-2",
+  "text-tone-3",
+  "text-tone-4",
+  "text-tone-5",
+  "text-tone-6",
+] as const;
+
+function toneFor(seed: string) {
+  let n = 0;
+  for (let i = 0; i < seed.length; i += 1) n = (n + seed.charCodeAt(i)) % 6;
+  return n;
+}
+
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const item = (
@@ -63,13 +87,20 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
         to={to}
         onClick={onNavigate}
         className={cn(
-          "flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors",
+          "flex items-center gap-2.5 rounded-xl px-2 py-1.5 text-sm transition-colors",
           active
             ? "gradient-primary font-medium text-primary-foreground shadow-[var(--shadow-lift)]"
             : "text-muted-foreground hover:bg-sidebar-accent hover:text-foreground",
         )}
       >
-        <Icon className="size-4 shrink-0" />
+        <span
+          className={cn(
+            "grid size-8 shrink-0 place-items-center rounded-lg transition-colors",
+            active ? "bg-primary-foreground/20 text-primary-foreground" : ICON_TONE[toneFor(label)],
+          )}
+        >
+          <Icon className="size-4" />
+        </span>
         <span className="min-w-0 truncate">{label}</span>
         {dot ? <span className="ml-auto size-2 shrink-0 rounded-full bg-destructive" /> : null}
       </Link>
@@ -125,6 +156,47 @@ function UserFooter() {
         <LogOut className="size-4" />
       </Link>
     </div>
+  );
+}
+
+const QUICK = [
+  { to: "/", label: "Beranda", icon: Home },
+  { to: "/pelanggaran", label: "Pelanggaran", icon: TriangleAlert },
+  { to: "/halaqoh", label: "Absen", icon: BookOpen },
+  { to: "/laporan-wali", label: "Laporan", icon: Send },
+] as const;
+
+function BottomNav({ onMore }: { onMore: () => void }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  return (
+    <nav className="glass fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 gap-1 rounded-2xl p-1.5 lg:hidden">
+      {QUICK.map((q) => {
+        const active = pathname === q.to;
+        return (
+          <Link
+            key={q.to}
+            to={q.to}
+            className={cn(
+              "flex flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 text-[10px] font-medium transition-colors",
+              active
+                ? "gradient-primary text-primary-foreground"
+                : TONE_TEXT[toneFor(q.label)],
+            )}
+          >
+            <q.icon className="size-[18px]" />
+            <span className="w-full truncate text-center">{q.label}</span>
+          </Link>
+        );
+      })}
+      <button
+        type="button"
+        onClick={onMore}
+        className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 text-[10px] font-medium text-muted-foreground"
+      >
+        <Menu className="size-[18px]" />
+        <span>Menu</span>
+      </button>
+    </nav>
   );
 }
 
@@ -195,8 +267,8 @@ export function AppShell({ children }: { children: ReactNode }) {
         ) : null}
 
         {/* Konten */}
-        <main className="min-w-0 flex-1 space-y-5">
-          <div className="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+        <main className="min-w-0 flex-1 space-y-4 pb-24 sm:space-y-5 lg:pb-0">
+          <div className="glass sticky top-2 z-30 flex items-center gap-3 rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 lg:static">
             <button
               onClick={() => setOpen(true)}
               aria-label="Buka menu"
@@ -219,6 +291,9 @@ export function AppShell({ children }: { children: ReactNode }) {
           {children}
         </main>
       </div>
+
+      {/* Navigasi bawah khusus HP */}
+      <BottomNav onMore={() => setOpen(true)} />
     </div>
   );
 }

@@ -52,6 +52,12 @@
   --color-sev-2: var(--sev-2);
   --color-sev-3: var(--sev-3);
   --color-sev-4: var(--sev-4);
+  --color-tone-1: var(--tone-1);
+  --color-tone-2: var(--tone-2);
+  --color-tone-3: var(--tone-3);
+  --color-tone-4: var(--tone-4);
+  --color-tone-5: var(--tone-5);
+  --color-tone-6: var(--tone-6);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
@@ -94,6 +100,15 @@
   --sev-2: oklch(0.7 0.13 85);
   --sev-3: oklch(0.63 0.16 45);
   --sev-4: oklch(0.52 0.19 22);
+
+  /* Palet aksen warna-warni (tetap harmonis dengan hijau) */
+  --tone-1: oklch(0.58 0.13 165); /* emerald */
+  --tone-2: oklch(0.6 0.12 205); /* teal-biru */
+  --tone-3: oklch(0.58 0.14 265); /* indigo lembut */
+  --tone-4: oklch(0.68 0.14 82); /* amber */
+  --tone-5: oklch(0.6 0.16 15); /* rose */
+  --tone-6: oklch(0.6 0.14 320); /* plum */
+
 
   --border: oklch(0.88 0.022 160);
   --input: oklch(0.9 0.02 160);
@@ -144,6 +159,14 @@
   --sev-2: oklch(0.78 0.13 88);
   --sev-3: oklch(0.7 0.15 48);
   --sev-4: oklch(0.62 0.19 24);
+
+  --tone-1: oklch(0.75 0.13 165);
+  --tone-2: oklch(0.76 0.11 205);
+  --tone-3: oklch(0.74 0.12 265);
+  --tone-4: oklch(0.8 0.13 82);
+  --tone-5: oklch(0.74 0.14 15);
+  --tone-6: oklch(0.75 0.12 320);
+
 
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
