@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Printer, FileSpreadsheet, Download } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import {
+  Banner,
   Button,
   DateRangePresets,
   Field,
@@ -34,14 +35,14 @@ export const Route = createFileRoute("/template-cetak")({
 });
 
 const TEMPLATES = [
-  { nama: "Rekap Pelanggaran", desc: "Daftar pelanggaran per santri beserta kategori." },
-  { nama: "Rekap Halaqoh & KBM", desc: "Jumlah sakit, izin, dan alpa per bulan." },
-  { nama: "Rekap Hafalan", desc: "Capaian surat, ayat, dan juz." },
-  { nama: "Rekap Ibadah", desc: "Tahajjud, dhuha, puasa, jamaah." },
-  { nama: "Rekap Kesehatan", desc: "Riwayat sakit dan penanganan." },
-  { nama: "Rekap Pembayaran", desc: "Tunggakan dan SPP dua belas bulan." },
-  { nama: "Rapor Lengkap per Santri", desc: "Semua kategori dalam satu lembar." },
-  { nama: "Daftar Hadir Kosong", desc: "Lembar kosong untuk pencatatan manual." },
+  { nama: "Formulir Pelanggaran", desc: "Nama santri + kolom tanggal, kategori, keterangan kosong." },
+  { nama: "Formulir Halaqoh & KBM", desc: "Nama santri + kolom Sakit, Izin, Alpa kosong." },
+  { nama: "Formulir Hafalan", desc: "Nama santri + kolom Surat, Ayat, Juz kosong." },
+  { nama: "Formulir Ibadah", desc: "Nama santri + kolom Tdk Jamaah, Tahajjud, dst. kosong." },
+  { nama: "Formulir Kesehatan", desc: "Nama santri + kolom sakit dan penanganan kosong." },
+  { nama: "Formulir Pembayaran", desc: "Nama santri + kolom tagihan dan SPP kosong." },
+  { nama: "Formulir Gabungan per Kelas", desc: "Semua kolom modul dalam satu lembar, kosong." },
+  { nama: "Daftar Hadir Kosong", desc: "Nomor urut dan nama santri saja." },
 ];
 
 function TemplateCetak() {
