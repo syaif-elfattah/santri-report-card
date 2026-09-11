@@ -150,6 +150,47 @@ function UserFooter() {
   );
 }
 
+const QUICK = [
+  { to: "/", label: "Beranda", icon: Home },
+  { to: "/pelanggaran", label: "Pelanggaran", icon: TriangleAlert },
+  { to: "/halaqoh", label: "Absen", icon: BookOpen },
+  { to: "/laporan-wali", label: "Laporan", icon: Send },
+] as const;
+
+function BottomNav({ onMore }: { onMore: () => void }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  return (
+    <nav className="glass fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 gap-1 rounded-2xl p-1.5 lg:hidden">
+      {QUICK.map((q) => {
+        const active = pathname === q.to;
+        return (
+          <Link
+            key={q.to}
+            to={q.to}
+            className={cn(
+              "flex flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 text-[10px] font-medium transition-colors",
+              active
+                ? "gradient-primary text-primary-foreground"
+                : cn("text-muted-foreground", ICON_TONE[toneFor(q.label)].split(" ")[1]),
+            )}
+          >
+            <q.icon className="size-[18px]" />
+            <span className="w-full truncate text-center">{q.label}</span>
+          </Link>
+        );
+      })}
+      <button
+        type="button"
+        onClick={onMore}
+        className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 text-[10px] font-medium text-muted-foreground"
+      >
+        <Menu className="size-[18px]" />
+        <span>Menu</span>
+      </button>
+    </nav>
+  );
+}
+
 export function AppShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
 
