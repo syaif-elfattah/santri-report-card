@@ -57,6 +57,15 @@ const ICON_TONE = [
   "bg-tone-6/15 text-tone-6",
 ] as const;
 
+const TONE_TEXT = [
+  "text-tone-1",
+  "text-tone-2",
+  "text-tone-3",
+  "text-tone-4",
+  "text-tone-5",
+  "text-tone-6",
+] as const;
+
 function toneFor(seed: string) {
   let n = 0;
   for (let i = 0; i < seed.length; i += 1) n = (n + seed.charCodeAt(i)) % 6;
