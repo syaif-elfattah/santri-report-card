@@ -171,7 +171,7 @@ function BottomNav({ onMore }: { onMore: () => void }) {
               "flex flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 text-[10px] font-medium transition-colors",
               active
                 ? "gradient-primary text-primary-foreground"
-                : cn("text-muted-foreground", ICON_TONE[toneFor(q.label)].split(" ")[1]),
+                : TONE_TEXT[toneFor(q.label)],
             )}
           >
             <q.icon className="size-[18px]" />
