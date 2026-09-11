@@ -511,6 +511,30 @@ export function Banner({
   );
 }
 
+const TONE_TEXT = [
+  "text-tone-1",
+  "text-tone-2",
+  "text-tone-3",
+  "text-tone-4",
+  "text-tone-5",
+  "text-tone-6",
+] as const;
+const TONE_BAR = [
+  "from-tone-1 to-tone-2",
+  "from-tone-2 to-tone-3",
+  "from-tone-3 to-tone-6",
+  "from-tone-4 to-tone-5",
+  "from-tone-5 to-tone-6",
+  "from-tone-6 to-tone-1",
+] as const;
+
+/** Warna aksen stabil berdasarkan teks label — supaya tampilan berwarna-warni. */
+export function toneIndex(seed: string) {
+  let n = 0;
+  for (let i = 0; i < seed.length; i += 1) n = (n + seed.charCodeAt(i)) % 6;
+  return n;
+}
+
 export function Stat({
   label,
   value,
@@ -528,11 +552,20 @@ export function Stat({
     success: "text-success",
     danger: "text-destructive",
   } as const;
+  const t = toneIndex(label);
   return (
-    <div className="glass rounded-2xl p-4">
-      <p className="text-xs text-muted-foreground">{label}</p>
-      <p className="mt-1 font-display text-3xl font-bold">{value}</p>
-      {hint ? <p className={cn("mt-1 text-xs", tones[hintTone])}>{hint}</p> : null}
+    <div className="glass relative overflow-hidden rounded-2xl p-3 sm:p-4">
+      <span
+        className={cn(
+          "absolute inset-x-0 top-0 h-1 bg-gradient-to-r",
+          TONE_BAR[t],
+        )}
+      />
+      <p className="text-[11px] text-muted-foreground sm:text-xs">{label}</p>
+      <p className={cn("mt-1 font-display text-2xl font-bold sm:text-3xl", TONE_TEXT[t])}>
+        {value}
+      </p>
+      {hint ? <p className={cn("mt-1 text-[11px] sm:text-xs", tones[hintTone])}>{hint}</p> : null}
     </div>
   );
 }
