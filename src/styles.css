@@ -160,6 +160,14 @@
   --sev-3: oklch(0.7 0.15 48);
   --sev-4: oklch(0.62 0.19 24);
 
+  --tone-1: oklch(0.75 0.13 165);
+  --tone-2: oklch(0.76 0.11 205);
+  --tone-3: oklch(0.74 0.12 265);
+  --tone-4: oklch(0.8 0.13 82);
+  --tone-5: oklch(0.74 0.14 15);
+  --tone-6: oklch(0.75 0.12 320);
+
+
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
   --ring: oklch(0.6 0.09 170);
