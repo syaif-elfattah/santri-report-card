@@ -241,6 +241,9 @@ export function AppShell({ children }: { children: ReactNode }) {
           {children}
         </main>
       </div>
+
+      {/* Navigasi bawah khusus HP */}
+      <BottomNav onMore={() => setOpen(true)} />
     </div>
   );
 }
