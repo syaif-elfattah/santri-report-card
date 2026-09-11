@@ -48,6 +48,21 @@ const ADMIN = [
   { to: "/admin/monitoring", label: "Monitoring Laporan", icon: BarChart3, dot: true },
 ] as const;
 
+const ICON_TONE = [
+  "bg-tone-1/15 text-tone-1",
+  "bg-tone-2/15 text-tone-2",
+  "bg-tone-3/15 text-tone-3",
+  "bg-tone-4/18 text-tone-4",
+  "bg-tone-5/15 text-tone-5",
+  "bg-tone-6/15 text-tone-6",
+] as const;
+
+function toneFor(seed: string) {
+  let n = 0;
+  for (let i = 0; i < seed.length; i += 1) n = (n + seed.charCodeAt(i)) % 6;
+  return n;
+}
+
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const item = (
@@ -63,13 +78,20 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
         to={to}
         onClick={onNavigate}
         className={cn(
-          "flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors",
+          "flex items-center gap-2.5 rounded-xl px-2 py-1.5 text-sm transition-colors",
           active
             ? "gradient-primary font-medium text-primary-foreground shadow-[var(--shadow-lift)]"
             : "text-muted-foreground hover:bg-sidebar-accent hover:text-foreground",
         )}
       >
-        <Icon className="size-4 shrink-0" />
+        <span
+          className={cn(
+            "grid size-8 shrink-0 place-items-center rounded-lg transition-colors",
+            active ? "bg-primary-foreground/20 text-primary-foreground" : ICON_TONE[toneFor(label)],
+          )}
+        >
+          <Icon className="size-4" />
+        </span>
         <span className="min-w-0 truncate">{label}</span>
         {dot ? <span className="ml-auto size-2 shrink-0 rounded-full bg-destructive" /> : null}
       </Link>
