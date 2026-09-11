@@ -217,8 +217,8 @@ export function AppShell({ children }: { children: ReactNode }) {
         ) : null}
 
         {/* Konten */}
-        <main className="min-w-0 flex-1 space-y-5">
-          <div className="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+        <main className="min-w-0 flex-1 space-y-4 pb-24 sm:space-y-5 lg:pb-0">
+          <div className="glass sticky top-2 z-30 flex items-center gap-3 rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 lg:static">
             <button
               onClick={() => setOpen(true)}
               aria-label="Buka menu"
