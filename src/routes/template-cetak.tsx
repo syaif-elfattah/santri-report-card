@@ -49,8 +49,16 @@ function TemplateCetak() {
     <AppShell>
       <PageHeader
         title="Template Cetak & Excel"
-        subtitle="Pilih rentang waktu dan kelas, lalu cetak atau unduh"
+        subtitle="Formulir kosong berisi daftar nama santri untuk diisi tangan atau di Excel"
       />
+
+      <Banner tone="primary" title="Semua kolom data sengaja dikosongkan">
+        Template ini bukan rekap dan bukan ekspor data. Isinya hanya nomor urut dan nama santri —
+        kolom Surat, Ayat, Sakit, Izin, Alpa, Tahajjud, dan lainnya tetap kosong meski bulan itu
+        sudah ada catatan di sistem. Alat bantu opsional untuk musyrif yang ingin mengisi di kertas
+        atau Excel dulu, lalu mengetiknya ke halaman modul. Untuk data yang sudah terisi, gunakan
+        Ekspor Excel di halaman Pelanggaran atau Kesehatan.
+      </Banner>
 
       <GlassCard className="p-4 sm:p-5">
         <SectionTitle>Penyaring data</SectionTitle>
