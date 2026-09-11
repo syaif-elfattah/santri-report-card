@@ -184,15 +184,62 @@ function Manajemen() {
         <div className="space-y-4">
           <Banner
             tone="warning"
-            title="Proses Naik Kelas dijalankan di akhir tahun ajaran"
-            action={
-              <Button size="sm" variant="warning">
-                <GraduationCap className="size-3.5" /> Proses Naik Kelas
-              </Button>
-            }
+            title="Naik Kelas adalah proses massal sekali klik untuk semua santri aktif"
           >
-            Riwayat data lama tetap tersimpan pada kelas dan tahun ajaran sebelumnya.
+            Susun pemetaan kelas asal ke kelas tujuan di bawah, lalu jalankan sekali — seluruh
+            santri berpindah bersamaan ke tahun ajaran baru. Riwayat lama tetap terikat pada kelas
+            dan tahun ajaran sebelumnya.
           </Banner>
+
+          <GlassCard className="p-4 sm:p-5">
+            <SectionTitle hint="2025/2026 → 2026/2027">Pemetaan kenaikan kelas</SectionTitle>
+            <DataTable
+              head={
+                <>
+                  <Th>Kelas asal</Th>
+                  <Th align="center">Santri aktif</Th>
+                  <Th>Kelas tujuan (tahun ajaran baru)</Th>
+                </>
+              }
+            >
+              {[
+                { asal: "MTs VII-A", jumlah: 18, tujuan: "MTs VIII-A", lulus: false },
+                { asal: "MTs VIII-B", jumlah: 17, tujuan: "MTs IX-B", lulus: false },
+                { asal: "MTs IX-A", jumlah: 15, tujuan: "Lulus", lulus: true },
+                { asal: "MA X-A", jumlah: 12, tujuan: "MA XI-A", lulus: false },
+                { asal: "MA XI-B", jumlah: 16, tujuan: "MA XII-B", lulus: false },
+                { asal: "MA XII-A", jumlah: 14, tujuan: "Lulus", lulus: true },
+              ].map((r) => (
+                <tr key={r.asal} className="hover:bg-secondary/40">
+                  <Td className="font-medium">{r.asal}</Td>
+                  <Td align="center">{r.jumlah}</Td>
+                  <Td>
+                    {r.lulus ? (
+                      <div className="flex items-center gap-2">
+                        <Badge tone="primary">Ditandai LULUS</Badge>
+                        <span className="text-xs text-muted-foreground">
+                          jenjang akhir — keluar dari status aktif
+                        </span>
+                      </div>
+                    ) : (
+                      <Select
+                        className="w-48"
+                        options={[r.tujuan, "MTs VIII-A", "MTs IX-B", "MA XI-A", "MA XII-B", "Lulus"]}
+                      />
+                    )}
+                  </Td>
+                </tr>
+              ))}
+            </DataTable>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <Button variant="warning">
+                <GraduationCap className="size-4" /> Proses Naik Kelas semua santri
+              </Button>
+              <span className="text-xs text-muted-foreground">
+                92 santri aktif akan diproses sekaligus · 29 santri ditandai lulus
+              </span>
+            </div>
+          </GlassCard>
           <GlassCard className="p-4 sm:p-5">
             <SectionTitle>Daftar tahun ajaran</SectionTitle>
             <DataTable

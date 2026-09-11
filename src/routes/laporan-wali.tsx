@@ -156,7 +156,7 @@ function LaporanWali() {
       </GlassCard>
 
       <GlassCard className="p-4 sm:p-5">
-        <SectionTitle hint="Yang dilihat wali santri">Pratinjau rapor</SectionTitle>
+        <SectionTitle hint="PDF yang dibuka wali dari tautan WhatsApp">Pratinjau rapor</SectionTitle>
         <div className="mx-auto max-w-md space-y-3 rounded-2xl bg-card p-5 ring-1 ring-border">
           <div className="text-center">
             <p className="font-display text-base font-semibold">Rapor Bulanan Santri</p>
