@@ -355,13 +355,13 @@ export function Tabs({
   onChange: (t: string) => void;
 }) {
   return (
-    <div className="glass-soft inline-flex rounded-2xl p-1">
+    <div className="glass-soft -mx-1 flex snap-x gap-1 overflow-x-auto rounded-2xl p-1 sm:mx-0 sm:inline-flex sm:overflow-visible">
       {tabs.map((t) => (
         <button
           key={t}
           onClick={() => onChange(t)}
           className={cn(
-            "rounded-xl px-3.5 py-1.5 text-sm font-medium transition-colors",
+            "shrink-0 snap-start whitespace-nowrap rounded-xl px-3.5 py-2 text-sm font-medium transition-colors",
             active === t
               ? "gradient-primary text-primary-foreground shadow-[var(--shadow-lift)]"
               : "text-muted-foreground hover:text-foreground",
